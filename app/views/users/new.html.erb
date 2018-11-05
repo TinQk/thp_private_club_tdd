@@ -1,0 +1,18 @@
+<h1>Création d'un compte</h1>
+
+<p>Entre tes infos</p><br>
+
+<%= form_for @user do |f| %>
+
+  <%= label_tag 'Ton prénom :' %>
+  <%= f.text_field :fname, placeholder: "Jean-Michel" %><br>
+
+  <%= label_tag 'Ton nom :' %>
+  <%= f.text_field :lname, placeholder: "Blancoeur" %><br>
+
+  <%= label_tag 'email:' %>
+  <%= f.text_field :email, placeholder: "michou@gmail.com"%><br>
+
+  <%= f.submit "Submit" %>
+
+<% end %>

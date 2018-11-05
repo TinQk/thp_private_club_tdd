@@ -1,0 +1,10 @@
+<h1>Inscrits</h1>
+
+<% @users.each do |user| %>
+
+  <h2>Utilisateur n°<%= user.id %> :</h2>
+  Prénom : <%= user.fname %><br>
+  Nom : <%= user.lname %><br>
+  Mail : <%= user.email %><br>
+
+<% end %>
