@@ -9,9 +9,14 @@ class UserTest < ActiveSupport::TestCase
       email: "user@example.com",
       password: "foobar",
       password_confirmation: "foobar")
+
+    @user2 = User.new(
+      fname: "FirstName2",
+      lname: "LastName2",
+      email: "user@example.com")
   end
 
-# TEST INITIAL
+# TEST VALEURS NON VIDES
 
   test "user should be valid" do
     assert @user.valid?
@@ -32,6 +37,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+# TEST MAXIMUM TAILLES VALEURS
+
   test "fname should not be too long" do
     @user.fname = "a" * 51
     assert_not @user.valid?
@@ -47,6 +54,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+# TEST ADRESSES MAILS VALIDES
+
   test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
@@ -55,6 +64,8 @@ class UserTest < ActiveSupport::TestCase
       assert @user.valid?, "#{valid_address.inspect} should be valid"
     end
   end
+
+# TEST ADRESSES MAILS INVALIDES
 
   test "email validation should reject invalid addresses" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
@@ -65,17 +76,25 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+# TEST ADRESSE MAIL UNIQUE
+
   test "email addresses should be unique" do
-    duplicate_user = @user.dup
-    duplicate_user.email = @user.email.upcase
-    @user.save
-    assert_not duplicate_user.valid?
+    #user = User.new(email: "user@example.com")
+    #duplicate_user = user.dup
+    #duplicate_user.email = user.email.upcase
+    @user2.email = @user2.email.upcase
+    @user2.save
+    assert_not @user2.valid?
   end
+
+# TEST PASSWORD NON VIDE
 
   test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 6
     assert_not @user.valid?
   end
+
+# TEST TAILLE MINI PASSWORD
 
   test "password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
