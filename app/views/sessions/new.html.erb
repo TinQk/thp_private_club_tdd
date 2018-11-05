@@ -1,0 +1,12 @@
+<h1>Log in</h1>
+
+<p>Entre tes infos</p><br>
+
+<%= form_for(:session, url: login_path) do |f| %>
+
+  <%= label_tag 'email:' %>
+  <%= f.text_field :email, placeholder: "michou@gmail.com"%><br>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
