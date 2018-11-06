@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-
+    redirect_to home_path
   end
 
   def index
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:fname, :lname, :email) # Sécurité obligatoire : ca vérifie que le paramètre renvoi que des attributs de user
+    params.require(:user).permit(:fname, :lname, :email, :password) # Sécurité obligatoire : ca vérifie que le paramètre renvoi que des attributs de user
   end
 
 end

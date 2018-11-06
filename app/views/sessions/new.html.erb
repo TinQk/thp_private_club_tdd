@@ -4,9 +4,14 @@
 
 <%= form_for(:session, url: login_path) do |f| %>
 
-  <%= label_tag 'email:' %>
+  <%= label_tag 'Email:' %>
   <%= f.text_field :email, placeholder: "michou@gmail.com"%><br>
 
-  <%= f.submit "Submit" %>
+  <%= label_tag 'Mot de passe :' %>
+  <%= f.text_field :password %><br>
+
+  <%= f.submit "Je me connecte !" %>
 
 <% end %>
+
+<p><a href="<%= home_path %>"><button type="button" name="button">Revenir à la page d'accueil</button></a></p>

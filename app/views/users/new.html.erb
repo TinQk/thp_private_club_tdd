@@ -13,6 +13,11 @@
   <%= label_tag 'email:' %>
   <%= f.text_field :email, placeholder: "michou@gmail.com"%><br>
 
-  <%= f.submit "Submit" %>
+  <%= label_tag 'password:' %>
+  <%= f.text_field :password %><br>
+
+  <%= f.submit "Je m'enregistre !" %>
 
 <% end %>
+
+<p><a href="<%= home_path %>"><button type="button" name="button">Revenir à la page d'accueil</button></a></p>

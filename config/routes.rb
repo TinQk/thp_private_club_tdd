@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'static_pages#home'
+  get '/', to: 'static_pages#home', as: 'home'
 
   resources :users
 
