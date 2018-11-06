@@ -5,7 +5,12 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    redirect_to home_path
+    if @user.save
+      log_in @user
+      redirect_to home_path
+    else
+      flash[:danger] = "essai encore"
+      redirect_to new_user_path
   end
 
   def index

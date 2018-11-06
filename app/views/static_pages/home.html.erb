@@ -1,7 +1,16 @@
 <h1>Club privée de la swagance</h1>
 
-<p>Tu es déja inscrit ?</p>
-<p><a href="<%= login_path %>"><button type="button" name="button">Me connecter</button></a></p>
+<% if logged_in? %>
+  <p>Bienvenue <%= current_user.fname %></p>
+  <p><a href="<%= users_path %>"><button type="button" name="button">Consulter les membres du clan</button></a></p>
+  <p><%= button_to "Me déconnecter", logout_path, method: "delete" %></p>
 
-<p>Crée ton compte dès maintenant !</p>
-<p><a href="<%= new_user_path %>"><button type="button" name="button">M'inscrire</button></a></p><br><br>
+
+<% else %>
+  <p>Tu es déja inscrit ?</p>
+  <p><a href="<%= login_path %>"><button type="button" name="button">Me connecter</button></a></p>
+
+  <p>Crée ton compte dès maintenant !</p>
+  <p><a href="<%= new_user_path %>"><button type="button" name="button">M'inscrire</button></a></p><br><br>
+
+<% end %>
